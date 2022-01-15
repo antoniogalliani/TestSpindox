@@ -1,0 +1,91 @@
+<div class="container-fluid bg-light" id="contenitore-portfolio">
+
+  <div id="contenitore-immagine">
+    <div id="immagine-esterna" class="bg-light"></div>
+    <div id="immagine-interna" [ngStyle]="{'background': 'url(' + (datiPortfolio$ | async)?.picture.large + ')', 'background-size': 'cover'}"></div>
+  </div>
+
+  <div id="contenitore-dati-portfolio" class="container-fluid">
+
+
+
+    <div class="row text-center text-secondary">
+      <div class="col">
+        <span *ngIf="visualizza == 'nome'">
+          <h4>Hi, my name is</h4>
+        </span>
+        <span *ngIf="visualizza == 'email'">
+          <h4>My email adress is</h4>
+        </span>
+        <span *ngIf="visualizza == 'compleanno'">
+          <h4>My birthday is</h4>
+        </span>
+        <span *ngIf="visualizza == 'indirizzo'">
+          <h4>My adress is</h4>
+        </span>
+        <span *ngIf="visualizza == 'telefono'">
+          <h4>My phone number is</h4>
+        </span>
+        <span *ngIf="visualizza == 'password'">
+          <h4>My password is</h4>
+        </span>
+      </div>
+    </div>
+
+
+
+    <div class="row text-center mt-4">
+      <div class="col">
+        <span *ngIf="visualizza == 'nome'">
+          <h4>Hi, my name is</h4>
+        </span>
+        <span *ngIf="visualizza == 'email'">
+          <h4>My email adress is</h4>
+        </span>
+        <span *ngIf="visualizza == 'compleanno'">
+          <h4>My birthday is</h4>
+        </span>
+        <span *ngIf="visualizza == 'indirizzo'">
+          <h4>My adress is</h4>
+        </span>
+        <span *ngIf="visualizza == 'telefono'">
+          <h4>My phone number is</h4>
+        </span>
+        <span *ngIf="visualizza == 'password'">
+          <h4>My password is</h4>
+        </span>
+      </div>
+    </div>
+
+
+    <div class="row" id="icone-portfolio">
+      <div class="col-3">
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'nome'"><i class="bi bi-person-circle icona-portfolio"></i></span>
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'email'"><i class="bi bi-envelope icona-portfolio"></i></span>
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'compleanno'"><i class="bi bi-calendar3 icona-portfolio"></i></span>
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'indirizzo'"><i class="bi bi-map icona-portfolio"></i></span>
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'telefono'"><i class="bi bi-telephone icona-portfolio"></i></span>
+      </div>
+      <div class="col-1">
+        <span (mouseover)="visualizza = 'password'"><i class="bi bi-lock icona-portfolio"></i></span>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
