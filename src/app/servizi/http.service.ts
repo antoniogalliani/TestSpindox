@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { ResponseServizioDati } from '../entita/response-servizio-dati';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class HttpService {
 
 
   ottieniDatiPortfolio():Observable<any> {
-    return this.http.get(this.ENDPOINT).pipe(map((arrayUtenti:ResponseServizioDati)=>{ return arrayUtenti.results[0] }));
+    return this.http.get(this.ENDPOINT).pipe(take(1), map((arrayUtenti:ResponseServizioDati)=>{ return arrayUtenti.results[0] }));
   }
 
   ottieniDati(): Observable<number>{

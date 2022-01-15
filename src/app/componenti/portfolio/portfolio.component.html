@@ -2,7 +2,7 @@
 
   <div id="contenitore-immagine">
     <div id="immagine-esterna" class="bg-light"></div>
-    <div id="immagine-interna" [ngStyle]="{'background': 'url(' + (datiPortfolio$ | async)?.picture.large + ')', 'background-size': 'cover'}"></div>
+    <div id="immagine-interna" [ngStyle]="{'background': 'url(' + datiPortfolio.url_immagine + ')', 'background-size': 'cover'}"></div>
   </div>
 
   <div id="contenitore-dati-portfolio" class="container-fluid">
@@ -34,25 +34,25 @@
 
 
 
-    <div class="row text-center mt-4">
+    <div class="row text-center mt-4 datiPortfolio">
       <div class="col">
         <span *ngIf="visualizza == 'nome'">
-          <h4>Hi, my name is</h4>
+          {{datiPortfolio.nome}}&nbsp;{{datiPortfolio.cognome}}
         </span>
         <span *ngIf="visualizza == 'email'">
-          <h4>My email adress is</h4>
+          {{datiPortfolio.email}}
         </span>
         <span *ngIf="visualizza == 'compleanno'">
-          <h4>My birthday is</h4>
+          {{datiPortfolio.data_di_nascita |  date:'dd/MM/yyyy'}}
         </span>
         <span *ngIf="visualizza == 'indirizzo'">
-          <h4>My adress is</h4>
+          {{datiPortfolio.numero}}&nbsp;{{datiPortfolio.strada}}
         </span>
         <span *ngIf="visualizza == 'telefono'">
-          <h4>My phone number is</h4>
+          {{datiPortfolio.telefono}}
         </span>
         <span *ngIf="visualizza == 'password'">
-          <h4>My password is</h4>
+          {{datiPortfolio.password}}
         </span>
       </div>
     </div>
