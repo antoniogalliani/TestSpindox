@@ -13,7 +13,7 @@ export class PortfolioComponent implements OnInit {
   visualizza: string = 'nome';
   datiPortfolio: DatiPortfolio;
   subscriptionOttieniDati: Subscription;
-  datiCaricati: boolean = false;
+  ottieniDati$: Observable<any>;
 
   constructor(private servizioHttp: HttpService) {
 
@@ -21,7 +21,9 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit() {
 
-    this.subscriptionOttieniDati = this.servizioHttp.ottieniDatiPortfolio().subscribe(x => {
+    this.ottieniDati$ = this.servizioHttp.ottieniDatiPortfolio();
+
+    this.subscriptionOttieniDati = this.ottieniDati$.subscribe(x => {
       this.datiPortfolio = new DatiPortfolio();
       this.datiPortfolio.url_immagine = x.picture.large;
       this.datiPortfolio.nome = x.name.first;
@@ -32,7 +34,6 @@ export class PortfolioComponent implements OnInit {
       this.datiPortfolio.numero = x.location.street.number;
       this.datiPortfolio.telefono = x.phone;
       this.datiPortfolio.password = x.login.password;
-      this.datiCaricati = true;
     });
   }
 

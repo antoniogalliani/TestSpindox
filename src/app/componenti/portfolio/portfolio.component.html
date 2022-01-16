@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light" id="contenitore-portfolio" *ngIf="datiCaricati else loading">
+<div class="container-fluid bg-light" id="contenitore-portfolio" *ngIf="(ottieniDati$ | async) else loading">
 
   <div id="contenitore-immagine">
     <div id="immagine-esterna" class="bg-light"></div>
