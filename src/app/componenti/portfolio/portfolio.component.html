@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light" id="contenitore-portfolio">
+<div class="container-fluid bg-light" id="contenitore-portfolio" *ngIf="datiCaricati else loading">
 
   <div id="contenitore-immagine">
     <div id="immagine-esterna" class="bg-light"></div>
@@ -89,3 +89,4 @@
 
 
 </div>
+<div #loading></div>

@@ -13,6 +13,7 @@ export class PortfolioComponent implements OnInit {
   visualizza: string = 'nome';
   datiPortfolio: DatiPortfolio;
   subscriptionOttieniDati: Subscription;
+  datiCaricati: boolean = false;
 
   constructor(private servizioHttp: HttpService) {
 
@@ -31,12 +32,12 @@ export class PortfolioComponent implements OnInit {
       this.datiPortfolio.numero = x.location.street.number;
       this.datiPortfolio.telefono = x.phone;
       this.datiPortfolio.password = x.login.password;
-
+      this.datiCaricati = true;
     });
   }
 
 
-  ngOnDestroy() {   
+  ngOnDestroy() {
     this.subscriptionOttieniDati.unsubscribe();
   }
 

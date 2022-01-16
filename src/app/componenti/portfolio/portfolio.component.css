@@ -49,11 +49,28 @@ margin-top:8em;
 .icona-portfolio{
     font-size: 3rem; 
     color: lightgray;
+    position: relative;
+    z-index: 1;
 }
 
 .icona-portfolio:hover{
     color:cornflowerblue;
     border-top: 3px solid cornflowerblue;
+    position:relative;
+    z-index: 1;
+}
+
+.icona-portfolio:hover:after{
+    content: "";
+    position:absolute;
+    top: -8px;
+    left: 17px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7px 7px 7px;
+    border-color: transparent  transparent cornflowerblue transparent;
+    z-index: 2;
 }
 
 .datiPortfolio{
