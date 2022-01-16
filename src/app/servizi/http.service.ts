@@ -20,8 +20,4 @@ export class HttpService {
     return this.http.get(this.ENDPOINT).pipe(take(1), map((arrayUtenti:ResponseServizioDati)=>{ return arrayUtenti.results[0] }));
   }
 
-  ottieniDati(): Observable<number>{
-    return of(2,3,4);
-  }
-
 }
