@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DatiPortfolio } from 'src/app/entita/dati-portfolio';
 import { HttpService } from 'src/app/servizi/http.service';
 
@@ -10,16 +10,17 @@ import { HttpService } from 'src/app/servizi/http.service';
 })
 export class PortfolioComponent implements OnInit {
 
-visualizza: string = 'nome';
-datiPortfolio: DatiPortfolio;
+  visualizza: string = 'nome';
+  datiPortfolio: DatiPortfolio;
+  subscriptionOttieniDati: Subscription;
 
-  constructor(private servizioHttp:HttpService) { 
-    
+  constructor(private servizioHttp: HttpService) {
+
   }
 
   ngOnInit() {
 
-    this.servizioHttp.ottieniDatiPortfolio().subscribe(x=>{
+    this.subscriptionOttieniDati = this.servizioHttp.ottieniDatiPortfolio().subscribe(x => {
       this.datiPortfolio = new DatiPortfolio();
       this.datiPortfolio.url_immagine = x.picture.large;
       this.datiPortfolio.nome = x.name.first;
@@ -32,8 +33,14 @@ datiPortfolio: DatiPortfolio;
       this.datiPortfolio.password = x.login.password;
 
     });
-
-
   }
 
+
+  ngOnDestroy() {   
+    this.subscriptionOttieniDati.unsubscribe();
+  }
+
+
 }
+
+
